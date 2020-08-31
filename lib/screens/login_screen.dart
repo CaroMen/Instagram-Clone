@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insta/screens/signup_screen.dart';
+import 'package:insta/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   static final String id = 'login_screen';
@@ -15,9 +16,8 @@ class _LoginScreenState extends State<LoginScreen> {
   _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
-      print(_email);
-      print(_password);
       //Logging in the user w/ Firebase
+      AuthService.login(_email, _password);
     }
   }
 
@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         validator: (input) => input.length < 6
                             ? 'Must be at least 6 characters'
                             : null,
-                        onSaved: (input) => _email = input,
+                        onSaved: (input) => _password = input,
                         obscureText: true,
                       ),
                     ),
