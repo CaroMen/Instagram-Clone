@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:insta/models/user_model.dart';
+import 'package:insta/screens/edit_profile_screen.dart';
 import 'package:insta/utilities/constants.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -98,7 +99,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Container(
                             width: 200.0,
                             child: FlatButton(
-                              onPressed: () => print('Edit Profile'),
+                              onPressed: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => EditProfileScreen(
+                                    user: user,
+                                  ),
+                                ),
+                              ),
                               color: Colors.blue,
                               textColor: Colors.white,
                               child: Text(
